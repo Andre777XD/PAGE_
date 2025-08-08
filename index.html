@@ -42,11 +42,12 @@
         section {
             margin-bottom: 30px;
         }
-        #map {
+        #map, #map2 {
             height: 400px;
             width: 100%;
             border: 2px solid #ccc;
             border-radius: 8px;
+            margin-top: 15px;
         }
         img {
             max-width: 100%;
@@ -88,8 +89,13 @@
     </section>
 
     <section id="mapa">
-        <h2>Mapa Interactivo</h2>
+        <h2>Mapa Interactivo - Tacna</h2>
         <div id="map"></div>
+    </section>
+
+    <section>
+        <h2>Mapa Interactivo - Perú (Cuencas Hidrográficas)</h2>
+        <div id="map2"></div>
     </section>
 
     <section id="contacto">
@@ -104,25 +110,13 @@
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-    // Crear mapa base
-    var map = L.map('map').setView([-18.0066, -70.2463], 12);
-
-    // Capa base OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
-</script>
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
     // =========================
     // Primer mapa (Tacna)
     // =========================
-    var map = L.map('map').setView([-18.0066, -70.2463], 12);
-
+    var map1 = L.map('map').setView([-18.0066, -70.2463], 12);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap'
-    }).addTo(map);
+    }).addTo(map1);
 
     // =========================
     // Segundo mapa (Perú con cuencas)
