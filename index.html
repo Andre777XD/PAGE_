@@ -132,12 +132,16 @@
     fetch('cuencas.geojson')
       .then(response => response.json())
       .then(data => {
-        L.geoJSON(data).addTo(mapa); // mapa es tu instancia de Leaflet
-      });
+        L.geoJSON(data, {
+          style: { color: '#00ffff', weight: 2, opacity: 0.8 }
+        }).addTo(map2); // ← usar map2, no mapa
+      })
+      .catch(err => console.error('Error cargando GeoJSON:', err));
 </script>
 
 </body>
 </html>
+
 
 
 
