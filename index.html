@@ -130,17 +130,23 @@
 
     // Cargar GeoJSON de cuencas
     fetch('cuencas.geojson')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) throw new Error('Archivo no encontrado o error de red');
+        return response.json();
+      })
       .then(data => {
-        L.geoJSON(data, {
-          style: { color: '#00ffff', weight: 2, opacity: 0.8 }
-        }).addTo(map2); // ← usar map2, no mapa
+        console.log('GeoJSON cargado:', data); // 👈 Esto confirma que carga
+        let geojsonLayer = L.geoJSON(data, {
+          style: { color: 'red', weight: 3, opacity: 1 }
+        }).addTo(map2);
+        map2.fitBounds(geojsonLayer.getBounds());
       })
       .catch(err => console.error('Error cargando GeoJSON:', err));
 </script>
 
 </body>
 </html>
+
 
 
 
