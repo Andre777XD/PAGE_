@@ -130,29 +130,14 @@
 
     // Cargar GeoJSON de cuencas
     fetch('cuencas.geojson')
-        .then(response => response.json())
-        .then(data => {
-            L.geoJSON(data, {
-                style: {
-                    color: '#00ffff',
-                    weight: 2,
-                    opacity: 0.8
-                },
-                onEachFeature: function(feature, layer) {
-                    if (feature.properties) {
-                        let info = '';
-                        for (let prop in feature.properties) {
-                            info += `<strong>${prop}:</strong> ${feature.properties[prop]}<br>`;
-                        }
-                        layer.bindPopup(info);
-                    }
-                }
-            }).addTo(map2);
-        })
-        .catch(err => console.error('Error cargando GeoJSON:', err));
+      .then(response => response.json())
+      .then(data => {
+        L.geoJSON(data).addTo(mapa); // mapa es tu instancia de Leaflet
+      });
 </script>
 
 </body>
 </html>
+
 
 
